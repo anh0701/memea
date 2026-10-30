@@ -1,11 +1,6 @@
-
 import { CONTENT_WIDTH, PADDING } from "../../../types/export";
 import type { MemeDraft, ThreadsPost, ThreadsReply } from "../../../types/meme";
-import {
-  drawCommentIcon,
-  drawHeartIcon,
-  drawSendIcon,
-} from "../canvas.icons";
+import { drawCommentIcon, drawHeartIcon, drawSendIcon } from "../canvas.icons";
 import { wrapText } from "../canvas.text";
 import { roundedRect } from "../canvas.utils";
 
@@ -70,11 +65,7 @@ function drawAvatar(
   ctx.font = "700 15px Arial, sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText(
-    (name || "?").charAt(0).toUpperCase(),
-    centerX,
-    centerY,
-  );
+  ctx.fillText((name || "?").charAt(0).toUpperCase(), centerX, centerY);
 
   ctx.restore();
 }
@@ -94,16 +85,9 @@ function drawUserHeader(
   ctx.font = "700 12px Arial, sans-serif";
   ctx.fillStyle = "#101010";
 
-  ctx.fillText(
-    item.username || "@username",
-    x,
-    y + 12,
-    width * 0.7,
-  );
+  ctx.fillText(item.username || "@username", x, y + 12, width * 0.7);
 
-  const usernameWidth = ctx.measureText(
-    item.username || "@username",
-  ).width;
+  const usernameWidth = ctx.measureText(item.username || "@username").width;
 
   ctx.font = "10px Arial, sans-serif";
   ctx.fillStyle = "#999999";
@@ -160,12 +144,7 @@ function drawActions(
   const iconSize = 16;
   const iconY = y - 8;
 
-  const positions = [
-    x,
-    x + width * 0.3,
-    x + width * 0.58,
-    x + width * 0.83,
-  ];
+  const positions = [x, x + width * 0.3, x + width * 0.58, x + width * 0.83];
 
   drawHeartIcon(ctx, positions[0], iconY, iconSize, "#555555");
 
@@ -175,38 +154,18 @@ function drawActions(
   ctx.textBaseline = "middle";
   ctx.textAlign = "left";
 
-  ctx.fillText(
-    item.likes || "0",
-    positions[0] + 21,
-    y,
-  );
+  ctx.fillText(item.likes || "0", positions[0] + 21, y);
 
-  drawCommentIcon(
-    ctx,
-    positions[1],
-    iconY,
-    iconSize,
-    "#555555",
-  );
+  drawCommentIcon(ctx, positions[1], iconY, iconSize, "#555555");
 
   if (isPost) {
-    ctx.fillText(
-      String(replyCount),
-      positions[1] + 21,
-      y,
-    );
+    ctx.fillText(String(replyCount), positions[1] + 21, y);
   }
 
   ctx.font = "19px Arial, sans-serif";
   ctx.fillText("↻", positions[2], y + 1);
 
-  drawSendIcon(
-    ctx,
-    positions[3],
-    iconY,
-    iconSize,
-    "#555555",
-  );
+  drawSendIcon(ctx, positions[3], iconY, iconSize, "#555555");
 
   ctx.restore();
 }
@@ -221,51 +180,44 @@ export function drawThreads(
   const width = CONTENT_WIDTH;
 
   const contentX = x + CARD_PADDING + AVATAR_COLUMN_WIDTH;
-  const contentWidth =
-    width - CARD_PADDING * 2 - AVATAR_COLUMN_WIDTH;
+  const contentWidth = width - CARD_PADDING * 2 - AVATAR_COLUMN_WIDTH;
 
   const post = draft.threadsPost;
   const replies = draft.threadsReplies;
+  const showMainPost = draft.showMainPost;
 
-  // Tính vị trí bài đăng chính và từng phản hồi.
+  // Vị trí bắt đầu nội dung bên dưới header Threads.
   let currentY = cardY + CARD_PADDING + HEADER_HEIGHT + 12;
 
-  const postLayout = getItemLayout(
-    ctx,
-    post,
-    currentY,
-    contentWidth,
-  );
+  // Chỉ tính layout bài đăng chính khi checkbox được bật.
+  let postLayout: ThreadItemLayout | null = null;
 
-  currentY = postLayout.bottomY + ITEM_GAP;
+  if (showMainPost) {
+    postLayout = getItemLayout(ctx, post, currentY, contentWidth);
 
+    currentY = postLayout.bottomY + ITEM_GAP;
+  }
+
+  // Tính layout các phản hồi.
   const replyLayouts: ThreadItemLayout[] = [];
 
   replies.forEach((reply) => {
-    const layout = getItemLayout(
-      ctx,
-      reply,
-      currentY,
-      contentWidth,
-    );
+    const layout = getItemLayout(ctx, reply, currentY, contentWidth);
 
     replyLayouts.push(layout);
     currentY = layout.bottomY + ITEM_GAP;
   });
 
-  const cardHeight =
-    currentY - cardY + CARD_PADDING - ITEM_GAP;
+  // Tính chiều cao card theo nội dung thực tế đang hiển thị.
+  const lastReplyLayout = replyLayouts[replyLayouts.length - 1];
+
+  const contentBottom =
+    lastReplyLayout?.bottomY ?? postLayout?.bottomY ?? currentY;
+
+  const cardHeight = contentBottom - cardY + CARD_PADDING;
 
   // Card nền.
-  roundedRect(
-    ctx,
-    x,
-    cardY,
-    width,
-    cardHeight,
-    14,
-    "#ffffff",
-  );
+  roundedRect(ctx, x, cardY, width, cardHeight, 14, "#ffffff");
 
   // Viền card.
   ctx.save();
@@ -282,77 +234,48 @@ export function drawThreads(
   ctx.fillStyle = "#101010";
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
-  ctx.fillText(
-    "threads",
-    x + CARD_PADDING,
-    cardY + CARD_PADDING + 22,
-  );
+  ctx.fillText("threads", x + CARD_PADDING, cardY + CARD_PADDING + 22);
 
   ctx.font = "12px Arial, sans-serif";
   ctx.fillStyle = "#777777";
   ctx.textAlign = "right";
-  ctx.fillText(
-    "•••",
-    x + width - CARD_PADDING,
-    cardY + CARD_PADDING + 20,
-  );
+  ctx.fillText("•••", x + width - CARD_PADDING, cardY + CARD_PADDING + 20);
   ctx.restore();
 
-  // Bài đăng chính.
-  drawAvatar(
-    ctx,
-    x + CARD_PADDING,
-    postLayout.avatarY,
-    post.name,
-    "#e8e8e8",
-  );
+  // Chỉ vẽ bài đăng chính khi checkbox được bật.
+  if (showMainPost && postLayout) {
+    drawAvatar(ctx, x + CARD_PADDING, postLayout.avatarY, post.name, "#e8e8e8");
 
-  drawUserHeader(
-    ctx,
-    post,
-    contentX,
-    postLayout.contentY,
-    contentWidth,
-  );
+    drawUserHeader(ctx, post, contentX, postLayout.contentY, contentWidth);
 
-  drawItemText(
-    ctx,
-    postLayout.textLines,
-    contentX,
-    postLayout.contentY + 43,
-  );
+    drawItemText(ctx, postLayout.textLines, contentX, postLayout.contentY + 43);
 
-  drawActions(
-    ctx,
-    post,
-    contentX,
-    postLayout.actionsY,
-    contentWidth,
-    true,
-    replies.length,
-  );
+    drawActions(
+      ctx,
+      post,
+      contentX,
+      postLayout.actionsY,
+      contentWidth,
+      true,
+      replies.length,
+    );
+  }
 
-  // Đường phân cách trước phần phản hồi.
-  if (replies.length > 0) {
+  // Chỉ vẽ đường phân cách khi bài đăng chính đang hiển thị.
+  if (showMainPost && postLayout && replies.length > 0) {
     const dividerY = postLayout.bottomY + 1;
 
     ctx.save();
     ctx.strokeStyle = "#eeeeee";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(
-      x + CARD_PADDING,
-      dividerY,
-    );
-    ctx.lineTo(
-      x + width - CARD_PADDING,
-      dividerY,
-    );
+    ctx.moveTo(x + CARD_PADDING, dividerY);
+    ctx.lineTo(x + width - CARD_PADDING, dividerY);
     ctx.stroke();
     ctx.restore();
   }
 
-  // Đường nối giữa các bình luận, không nối với bài viết chính.
+  // Đường nối giữa các bình luận, không nối với bài đăng chính.
   if (replyLayouts.length > 1) {
     const lineX = x + CARD_PADDING + AVATAR_SIZE / 2;
 
@@ -364,56 +287,25 @@ export function drawThreads(
       const nextLayout = replyLayouts[index + 1];
 
       ctx.beginPath();
-      ctx.moveTo(
-        lineX,
-        layout.avatarY + AVATAR_SIZE,
-      );
-      ctx.lineTo(
-        lineX,
-        nextLayout.avatarY,
-      );
+      ctx.moveTo(lineX, layout.avatarY + AVATAR_SIZE);
+      ctx.lineTo(lineX, nextLayout.avatarY);
       ctx.stroke();
     });
 
     ctx.restore();
   }
 
-  // Các phản hồi.
+  // Render các phản hồi.
   replies.forEach((reply, index) => {
     const layout = replyLayouts[index];
 
-    drawAvatar(
-      ctx,
-      x + CARD_PADDING,
-      layout.avatarY,
-      reply.name,
-      "#eeeeee",
-    );
+    drawAvatar(ctx, x + CARD_PADDING, layout.avatarY, reply.name, "#eeeeee");
 
-    drawUserHeader(
-      ctx,
-      reply,
-      contentX,
-      layout.contentY,
-      contentWidth,
-    );
+    drawUserHeader(ctx, reply, contentX, layout.contentY, contentWidth);
 
-    drawItemText(
-      ctx,
-      layout.textLines,
-      contentX,
-      layout.contentY + 43,
-    );
+    drawItemText(ctx, layout.textLines, contentX, layout.contentY + 43);
 
-    drawActions(
-      ctx,
-      reply,
-      contentX,
-      layout.actionsY,
-      contentWidth,
-      false,
-      0,
-    );
+    drawActions(ctx, reply, contentX, layout.actionsY, contentWidth, false, 0);
   });
 
   return cardY + cardHeight;

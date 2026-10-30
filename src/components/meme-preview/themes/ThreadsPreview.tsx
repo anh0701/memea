@@ -21,41 +21,46 @@ export default function ThreadsPreview({ draft }: Props) {
         <strong>threads</strong>
         <MoreHorizontal size={20} />
       </header>
-
-      <div className="threads-post">
-        <div className="threads-avatar">
-          {post.name.charAt(0).toUpperCase()}
-        </div>
-
-        <div className="threads-content">
-          <div className="threads-user">
-            <strong>{post.username}</strong>
-            <span>{post.time}</span>
-            <MoreHorizontal size={16} />
+      {draft.showMainPost && (
+        <div className="threads-post">
+          <div className="threads-avatar">
+            {post.name.charAt(0).toUpperCase()}
           </div>
 
-          <div className="threads-name">{post.name}</div>
+          <div className="threads-content">
+            <div className="threads-user">
+              <strong>{post.username}</strong>
+              <span>{post.time}</span>
+              <MoreHorizontal size={16} />
+            </div>
 
-          <p className="threads-text">{post.text}</p>
+            <div className="threads-name">{post.name}</div>
 
-          <div className="threads-actions">
-            <span>
-              <Heart size={17} /> {post.likes}
-            </span>
-            <span>
-              <MessageCircle size={17} /> {draft.threadsReplies.length}
-            </span>
-            <span>
-              <Repeat2 size={17} />
-            </span>
-            <span>
-              <Send size={17} />
-            </span>
+            <p className="threads-text">{post.text}</p>
+
+            <div className="threads-actions">
+              <span>
+                <Heart size={17} /> {post.likes}
+              </span>
+              <span>
+                <MessageCircle size={17} /> {draft.threadsReplies.length}
+              </span>
+              <span>
+                <Repeat2 size={17} />
+              </span>
+              <span>
+                <Send size={17} />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="threads-replies">
+      <div
+        className={`threads-replies ${
+          draft.showMainPost ? "" : "threads-replies--standalone"
+        }`}
+      >
         {draft.threadsReplies.map((reply) => (
           <div className="threads-reply" key={reply.id}>
             <div className="threads-avatar">

@@ -2,8 +2,10 @@ import type { MemeDraft } from "../../../types/meme";
 
 export const defaultThreadsMeme: Pick<
   MemeDraft,
-  "threadsPost" | "threadsReplies"
+  "threadsPost" | "threadsReplies" | "showMainPost"
 > = {
+  showMainPost: true,
+
   threadsPost: {
     name: "Người hay trì hoãn",
     username: "@ngaymai_lam",

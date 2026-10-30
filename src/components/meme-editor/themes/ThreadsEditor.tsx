@@ -45,53 +45,62 @@ export default function ThreadsEditor({ draft, onChange }: EditorProps) {
 
   return (
     <>
-      <section className="editor-section">
-        <h3>Bài đăng chính</h3>
+      <label className="editor-checkbox">
+        <input
+          type="checkbox"
+          checked={draft.showMainPost}
+          onChange={(event) => onChange({ showMainPost: event.target.checked })}
+        />
+        Hiển thị bài đăng chính
+      </label>
+      {draft.showMainPost && (
+        <section className="editor-section">
+          <h3>Bài đăng chính</h3>
 
-        {fieldLabel(
-          "Tên hiển thị",
-          <input
-            value={draft.threadsPost.name}
-            onChange={(event) => updatePost({ name: event.target.value })}
-          />,
-        )}
-
-        {fieldLabel(
-          "Tên tài khoản",
-          <input
-            value={draft.threadsPost.username}
-            onChange={(event) => updatePost({ username: event.target.value })}
-          />,
-        )}
-
-        {fieldLabel(
-          "Nội dung bài đăng",
-          <textarea
-            rows={4}
-            value={draft.threadsPost.text}
-            onChange={(event) => updatePost({ text: event.target.value })}
-          />,
-        )}
-
-        <div className="two-fields">
           {fieldLabel(
-            "Thời gian",
+            "Tên hiển thị",
             <input
-              value={draft.threadsPost.time}
-              onChange={(event) => updatePost({ time: event.target.value })}
+              value={draft.threadsPost.name}
+              onChange={(event) => updatePost({ name: event.target.value })}
             />,
           )}
 
           {fieldLabel(
-            "Lượt thích",
+            "Tên tài khoản",
             <input
-              value={draft.threadsPost.likes}
-              onChange={(event) => updatePost({ likes: event.target.value })}
+              value={draft.threadsPost.username}
+              onChange={(event) => updatePost({ username: event.target.value })}
             />,
           )}
-        </div>
-      </section>
 
+          {fieldLabel(
+            "Nội dung bài đăng",
+            <textarea
+              rows={4}
+              value={draft.threadsPost.text}
+              onChange={(event) => updatePost({ text: event.target.value })}
+            />,
+          )}
+
+          <div className="two-fields">
+            {fieldLabel(
+              "Thời gian",
+              <input
+                value={draft.threadsPost.time}
+                onChange={(event) => updatePost({ time: event.target.value })}
+              />,
+            )}
+
+            {fieldLabel(
+              "Lượt thích",
+              <input
+                value={draft.threadsPost.likes}
+                onChange={(event) => updatePost({ likes: event.target.value })}
+              />,
+            )}
+          </div>
+        </section>
+      )}
       <section className="editor-section">
         <h3>Phản hồi ({draft.threadsReplies.length})</h3>
 

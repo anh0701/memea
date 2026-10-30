@@ -37,6 +37,7 @@ export interface MemeDraft {
 
   threadsPost: ThreadsPost;
   threadsReplies: ThreadsReply[];
+  showMainPost: boolean;
 }
 
 export interface ThreadsReply {

@@ -195,6 +195,90 @@
   gap: 18px;
 }
 
+.threads-replies--standalone {
+  padding-top: 0;
+  border-top: none;
+}
+
+.editor-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+
+  margin-top: 20px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+
+  color: #333333;
+  background: #f8f8f7;
+  border: 1px solid #e8e8e6;
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.editor-checkbox:hover {
+  background: #f1f3ef;
+  border-color: #d5ddd2;
+}
+
+.editor-checkbox input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  position: relative;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  margin: 0;
+
+  background: #ffffff;
+  border: 1.5px solid #c9cec7;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.editor-checkbox input:checked {
+  background: #647c65;
+  border-color: #647c65;
+}
+
+.editor-checkbox input:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.editor-checkbox input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(100 124 101 / 18%);
+}
+
+.editor-checkbox:has(input:checked) {
+  background: #f0f4ef;
+  border-color: #d5e0d3;
+}
+
 /* ========================================
    RESPONSIVE
 ======================================== */

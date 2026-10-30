@@ -21,18 +21,20 @@ import {
 } from "./themes";
 
 function estimateThreadsHeight(
-  draft: Pick<MemeDraft, "threadsPost" | "threadsReplies">,
+  draft: Pick<MemeDraft, "threadsPost" | "threadsReplies" | "showMainPost">,
 ): number {
-  const items = [draft.threadsPost, ...draft.threadsReplies];
+  const items = [
+    ...(draft.showMainPost ? [draft.threadsPost] : []),
+    ...draft.threadsReplies,
+  ];
 
   const estimatedItemHeight = items.reduce((total, item) => {
-    // Ước tính số dòng để tránh Canvas bị cắt nội dung dài.
     const lineCount = Math.max(1, Math.ceil((item.text || "").length / 35));
 
     return total + 100 + lineCount * 19;
   }, 0);
 
-  return 120 + estimatedItemHeight + draft.threadsReplies.length * 22;
+  return 120 + estimatedItemHeight + items.length * 22;
 }
 
 export async function exportMemeImage(
