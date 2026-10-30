@@ -1,0 +1,248 @@
+/* ========================================
+   THREADS MEME
+======================================== */
+
+.threads-meme {
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  background: #ffffff;
+  color: #101010;
+  border-radius: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* Header */
+
+.threads-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  color: #101010;
+}
+
+.threads-header strong {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.threads-header svg {
+  color: #777777;
+}
+
+/* Post layout */
+
+.threads-post,
+.threads-reply {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 12px;
+  position: relative;
+}
+
+.threads-post {
+  padding-bottom: 24px;
+}
+
+/* Avatar */
+
+.threads-avatar {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e8e8e8;
+  color: #333333;
+  font-size: 17px;
+  font-weight: 700;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Content */
+
+.threads-content {
+  min-width: 0;
+}
+
+.threads-user {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 22px;
+  color: #777777;
+  font-size: 13px;
+}
+
+.threads-user strong {
+  color: #101010;
+  font-size: 14px;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.threads-user span {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #999999;
+}
+
+.threads-user svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  margin-left: auto;
+  color: #777777;
+}
+
+.threads-name {
+  margin-top: 3px;
+  color: #777777;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.threads-text {
+  margin: 9px 0 15px;
+  color: #101010;
+  font-size: 15px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Action buttons */
+
+.threads-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #777777;
+}
+
+.threads-actions span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 22px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.threads-actions svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+  color: #555555;
+}
+
+/* Replies */
+
+.threads-replies {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #eeeeee;
+}
+
+/* Mỗi reply */
+
+.threads-reply {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 12px;
+  background: #ffffff;
+}
+
+/* Đường nối giữa các avatar */
+
+.threads-reply:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 42px;
+  bottom: -22px;
+  left: 20px;
+  width: 1.5px;
+  background: #e5e5e5;
+}
+
+/* Avatar nằm trên đường nối */
+
+.threads-reply .threads-avatar {
+  position: relative;
+  z-index: 1;
+  background: #eeeeee;
+}
+
+/* Nội dung */
+
+.threads-reply .threads-text {
+  margin-bottom: 12px;
+}
+
+.threads-reply .threads-actions {
+  gap: 18px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 480px) {
+  .threads-meme {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .threads-header {
+    margin-bottom: 20px;
+  }
+
+  .threads-post,
+  .threads-reply {
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 9px;
+  }
+
+  .threads-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .threads-replies::before {
+    left: 17px;
+  }
+
+  .threads-user {
+    gap: 5px;
+  }
+
+  .threads-user strong {
+    font-size: 13px;
+  }
+
+  .threads-text {
+    font-size: 14px;
+  }
+
+  .threads-actions {
+    gap: 14px;
+  }
+
+  .threads-actions svg {
+    width: 16px;
+    height: 16px;
+  }
+}

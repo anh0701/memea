@@ -1,0 +1,111 @@
+/* Export buttons */
+
+.export-area {
+  margin-top: 4px;
+}
+
+.export-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.export-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 11px;
+  padding: 13px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.export-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.export-button.primary {
+  color: white;
+  background: #7954ed;
+  box-shadow: 0 4px 0 #5d3dc1;
+}
+
+.export-button.primary:hover:not(:disabled) {
+  box-shadow: 0 6px 0 #5d3dc1;
+}
+
+.export-button.secondary {
+  color: #5e4a9c;
+  border: 1px solid #d8ccfa;
+  background: #f8f5ff;
+}
+
+.export-caption {
+  margin: 12px 0 0;
+  text-align: center;
+  color: #a19aaa;
+  font-size: 10px;
+}
+
+.export-error {
+  color: #c44949;
+  font-size: 11px;
+  text-align: center;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.preview-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f5f2ff;
+  color: #75668f;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.disclaimer-shield {
+  display: grid;
+  place-items: center;
+  flex: 0 0 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background: #8a6de3;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.export-actions .export-button {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.export-actions .export-error {
+  flex: 0 0 100%;
+  margin: 0;
+}

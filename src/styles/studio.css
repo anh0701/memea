@@ -1,0 +1,105 @@
+/* Studio layout */
+
+.studio-section {
+  margin-top: 8px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-heading h2,
+.how-section h2 {
+  margin: 7px 0 0;
+  font:
+    700 28px "Space Grotesk",
+    sans-serif;
+  letter-spacing: -1px;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #777080;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  border: 1px solid #ece4db;
+  border-radius: 30px;
+  background: #fffdf9;
+}
+
+.live-pill::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7fdb8a;
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: minmax(330px, 0.83fr) minmax(0, 1.17fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.editor-panel,
+.preview-panel {
+  border: 1px solid #eee5db;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 30px #3a2a1608;
+  min-width: 0;
+}
+
+.editor-panel,
+.preview-panel {
+  padding: 24px;
+}
+
+.editor-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #f1ebe5;
+}
+
+.editor-heading h2 {
+  font:
+    700 23px "Space Grotesk",
+    sans-serif;
+  letter-spacing: -0.8px;
+  margin: 5px 0 0;
+}
+
+.step-pill {
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  color: #8c7bba;
+  background: #f6f2ff;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.editor-section {
+  padding: 19px 0;
+  border-bottom: 1px solid #f2ece6;
+}
+
+.editor-section:last-of-type {
+  border-bottom: 0;
+}
+
+.editor-section h3 {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 800;
+}

@@ -1,0 +1,199 @@
+/* ========================================
+   Lucide icons — MemeA theme
+======================================== */
+
+/* Header */
+.brand-mark svg {
+  color: #fff;
+}
+
+.about-link svg {
+  color: var(--purple);
+}
+
+/* Hero */
+.hero-kicker svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.hero-points svg {
+  color: #35a86a;
+  flex-shrink: 0;
+}
+
+/* Hero doodles */
+.doodle-bubble svg {
+  margin: 5px auto 0;
+  color: #fff;
+}
+
+.doodle-spark svg {
+  display: block;
+  color: #8d6af1;
+}
+
+.doodle-arrow {
+  color: var(--purple);
+}
+
+/* Section heading */
+.section-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-heading h2 svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+/* Editor heading */
+.editor-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editor-heading h2 svg {
+  color: var(--purple);
+  flex-shrink: 0;
+}
+
+/* Meme type selector */
+.type-button > svg {
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+  box-sizing: content-box;
+  border-radius: 11px;
+  color: var(--purple);
+  background: #eee8ff;
+  flex-shrink: 0;
+}
+
+.type-button:nth-child(2) > svg {
+  color: #d28a20;
+  background: #fff0d6;
+}
+
+.type-button:nth-child(3) > svg {
+  color: #e66d4d;
+  background: #ffe7e0;
+}
+
+.type-button:nth-child(4) > svg {
+  color: #259b70;
+  background: #e1f7ed;
+}
+
+.type-button.selected > svg {
+  color: var(--purple);
+  background: #e8deff;
+}
+
+/* Editor controls */
+.editor-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editor-section h3 > svg {
+  color: var(--purple);
+  flex-shrink: 0;
+}
+
+.secondary-button > svg,
+.upload-box > svg {
+  flex-shrink: 0;
+}
+
+/* Watermark notice */
+.editor-note > svg {
+  color: #36965a;
+  flex-shrink: 0;
+}
+
+/* Preview */
+.preview-heading .eyebrow {
+  display: inline-block;
+}
+
+.stage-decoration {
+  display: grid;
+  place-items: center;
+  line-height: 1;
+}
+
+.stage-decoration-one svg {
+  color: #a68af5;
+}
+
+.stage-decoration-two svg {
+  color: var(--orange);
+}
+
+/* Export buttons */
+.export-button > svg {
+  flex-shrink: 0;
+}
+
+.export-button.primary > svg {
+  color: #fff;
+}
+
+.export-button.secondary > svg {
+  color: var(--purple);
+}
+
+/* How it works */
+.how-grid article > svg,
+.how-emoji svg {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--purple);
+}
+
+.how-grid article:nth-child(2) .how-emoji svg {
+  color: var(--orange);
+}
+
+.how-grid article:nth-child(3) > svg {
+  color: #299b70;
+}
+
+/* Footer */
+.footer p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer p svg {
+  flex-shrink: 0;
+  color: var(--orange);
+}
+
+.doodle-star {
+  display: grid;
+  place-items: center;
+  color: #ffb13d;
+  line-height: 1;
+}
+
+.disclaimer-shield {
+  display: grid;
+  place-items: center;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background: #8a6de3;
+}
+
+.disclaimer-shield svg {
+  display: block;
+}

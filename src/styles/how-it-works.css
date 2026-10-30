@@ -1,0 +1,62 @@
+/* How it works */
+
+.how-section {
+  padding: 76px 5% 64px;
+}
+
+.how-section h2 {
+  font-size: 29px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.how-grid article {
+  position: relative;
+  min-height: 165px;
+  padding: 22px;
+  border: 1px solid #eee5db;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.how-grid article > svg {
+  color: #8a68e9;
+}
+
+.how-grid article:nth-child(2) > svg {
+  color: #ff8a61;
+}
+
+.how-number {
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  color: #e8e0f9;
+  font:
+    700 25px "Space Grotesk",
+    sans-serif;
+}
+
+.how-emoji {
+  display: block;
+  font-size: 23px;
+}
+
+.how-grid h3 {
+  margin: 16px 0 6px;
+  font:
+    700 15px "Space Grotesk",
+    sans-serif;
+}
+
+.how-grid p {
+  margin: 0;
+  color: #8b8395;
+  font-size: 11px;
+  line-height: 1.7;
+}

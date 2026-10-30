@@ -1,0 +1,278 @@
+/* Meme type selector */
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.type-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  border: 1px solid #eee7df;
+  border-radius: 12px;
+  padding: 11px 3px 10px;
+  background: #fffdf9;
+  color: #696174;
+  font-size: 10px;
+  font-weight: 700;
+  transition: 0.16s ease;
+}
+
+.type-button:hover {
+  border-color: #c9b8ff;
+  transform: translateY(-1px);
+}
+
+.type-button.selected {
+  color: #6d4ad4;
+  border-color: #9e83f8;
+  background: #f5f1ff;
+  box-shadow: inset 0 0 0 1px #9e83f8;
+}
+
+.type-emoji {
+  width: 35px;
+  height: 35px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  background: #eee8ff;
+}
+
+.type-emoji.notification {
+  background: #fff0d6;
+}
+
+.type-emoji.post {
+  background: #ffe7e0;
+}
+
+.type-emoji.image {
+  background: #e1f7ed;
+}
+
+/* Form fields */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 13px;
+  color: #716a7c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field input:not([type="color"]),
+.field textarea,
+.message-editor textarea,
+.message-editor-top select,
+.time-input {
+  width: 100%;
+  min-width: 0;
+  color: #312a44;
+  border: 1px solid #eae3dc;
+  border-radius: 9px;
+  outline: 0;
+  background: #fffdfb;
+  padding: 10px 11px;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.field input:focus,
+.field textarea:focus,
+.message-editor textarea:focus,
+.message-editor-top select:focus,
+.time-input:focus {
+  border-color: #a58af4;
+  box-shadow: 0 0 0 3px #8b65e91c;
+}
+
+.field textarea,
+.message-editor textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.two-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Chat editor */
+
+.message-editor-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.message-editor {
+  border: 1px solid #eee7e0;
+  border-radius: 11px;
+  padding: 9px;
+  background: #fffdfa;
+}
+
+.message-editor-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
+.message-editor-top select {
+  flex: 1;
+  padding: 7px 8px;
+  font-size: 10px;
+}
+
+.time-input {
+  width: 65px !important;
+  padding: 7px !important;
+  font-size: 10px !important;
+}
+
+.message-editor textarea {
+  display: block;
+  padding: 8px;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  padding: 7px;
+  border-radius: 7px;
+  color: #9c93a7;
+}
+
+.icon-button:hover {
+  background: #f5eaff;
+}
+
+.icon-button.danger:hover {
+  color: #e05252;
+  background: #fff0ee;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  border: 1px dashed #cbbcf4;
+  border-radius: 9px;
+  padding: 10px;
+  color: #7554d9;
+  background: #faf7ff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.secondary-button:hover {
+  background: #f2edff;
+}
+
+/* Upload and color controls */
+
+.color-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 39px;
+  border: 1px solid #eae3dc;
+  border-radius: 9px;
+  padding: 5px 8px;
+  background: #fffdfb;
+}
+
+.color-field input {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.color-field code {
+  color: #82798d;
+  font-size: 10px;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 22px 10px;
+  border: 1.5px dashed #c9b9f5;
+  border-radius: 12px;
+  color: #7857dc;
+  background: #faf7ff;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.upload-box strong {
+  font-size: 12px;
+}
+
+.upload-box span {
+  color: #9188a0;
+  font-size: 10px;
+}
+
+.upload-box input {
+  display: none;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: #d45c5c;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 0 12px;
+}
+
+.editor-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 11px;
+  background: #f2fbf4;
+  color: #4d7457;
+}
+
+.editor-note > span {
+  font-size: 18px;
+}
+
+.editor-note p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.editor-note strong {
+  font-size: 11px;
+}

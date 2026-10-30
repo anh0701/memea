@@ -1,0 +1,80 @@
+.preview-panel {
+  overflow: hidden;
+}
+
+.preview-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.preview-heading h3 {
+  margin: 5px 0 0;
+  font:
+    700 19px "Space Grotesk",
+    sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.preview-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #6c9e79;
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.preview-status span {
+  width: 6px;
+  height: 6px;
+}
+
+.preview-stage {
+  min-height: 450px;
+  margin: 22px 0 18px;
+  padding: 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px dashed #e6ddd3;
+  border-radius: 16px;
+  background-color: #fffaf3;
+  background-image: radial-gradient(#e9dfd4 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.stage-decoration {
+  position: absolute;
+  pointer-events: none;
+  color: #c8b3ff;
+  font-size: 33px;
+}
+
+.stage-decoration-one {
+  left: 16px;
+  top: 14px;
+}
+
+.stage-decoration-two {
+  right: 18px;
+  bottom: 15px;
+  color: #ffbd86;
+}
+
+/* .meme-canvas {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  min-height: 350px;
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--meme-bg, #fff1d6);
+  box-shadow: 0 14px 35px #37243a1c;
+  overflow: hidden;
+  color: #302b3e;
+} */

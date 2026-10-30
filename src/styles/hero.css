@@ -1,0 +1,79 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 340px;
+  padding: 50px 5% 48px;
+  position: relative;
+}
+
+.hero-copy {
+  max-width: 630px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-doodle {
+  width: 300px;
+  height: 245px;
+  position: relative;
+  flex: 0 0 300px;
+  margin-right: 2%;
+}
+
+.doodle-star {
+  position: absolute;
+  top: 0;
+  right: 60px;
+  color: #ffb13d;
+  font-size: 60px;
+}
+
+.doodle-bubble {
+  position: absolute;
+  top: 36px;
+  left: 35px;
+  width: 130px;
+  height: 130px;
+  border-radius: 48% 52% 45% 55%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: white;
+  background: #ff8d68;
+  font:
+    800 27px/1.1 "Space Grotesk",
+    sans-serif;
+  box-shadow: 0 10px 0 #e66d4d;
+  transform: rotate(-11deg);
+}
+
+.doodle-spark {
+  position: absolute;
+  top: 97px;
+  right: 25px;
+  color: #8d6af1;
+  font-size: 51px;
+}
+
+.doodle-note {
+  position: absolute;
+  right: 8px;
+  bottom: 24px;
+  padding: 13px 17px;
+  border: 2px solid #2b2540;
+  border-radius: 10px;
+  background: #fff2a8;
+  font:
+    700 12px/1.4 "Space Grotesk",
+    sans-serif;
+  transform: rotate(7deg);
+  box-shadow: 3px 4px 0 #2b2540;
+}
+
+.doodle-arrow {
+  position: absolute;
+  bottom: 3px;
+  left: 30px;
+  color: #8d6af1;
+}
