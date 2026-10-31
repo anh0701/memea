@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   CircleHelp,
   Download,
+  Eye,
   Laugh,
   PencilLine,
   Sparkles,
@@ -19,8 +20,11 @@ import ExportButtons from "./components/ExportButtons";
 import { defaultMeme } from "./data/meme/defaultMeme";
 import type { MemeDraft } from "./types/meme";
 
+type MobileView = "studio" | "preview";
+
 export default function App() {
   const [draft, setDraft] = useState<MemeDraft>(defaultMeme);
+  const [mobileView, setMobileView] = useState<MobileView>("studio");
 
   const updateDraft = (updates: Partial<MemeDraft>) => {
     setDraft((current) => ({
@@ -32,7 +36,7 @@ export default function App() {
   return (
     <main className="app-shell">
       <header className="topbar">
-        <a className="brand" href="#" aria-label="MemeForge trang chủ">
+        <a className="brand" href="#" aria-label="MemeA trang chủ">
           <span className="brand-mark">
             <Laugh size={23} strokeWidth={2.7} />
           </span>
@@ -87,19 +91,23 @@ export default function App() {
           <div className="doodle-star">
             <Asterisk size={60} strokeWidth={1.5} aria-hidden="true" />
           </div>
+
           <div className="doodle-bubble">
             LOL
             <br />
             <Laugh size={24} strokeWidth={1.8} aria-hidden="true" />
           </div>
+
           <div className="doodle-spark">
             <Sparkles size={24} strokeWidth={1.8} aria-hidden="true" />
           </div>
+
           <div className="doodle-note">
             100% made-up
             <br />
             100% for fun
           </div>
+
           <ArrowDownRight className="doodle-arrow" size={42} />
         </div>
       </section>
@@ -108,6 +116,7 @@ export default function App() {
         <div className="section-heading">
           <div>
             <span className="eyebrow">THE MEME WORKSHOP</span>
+
             <h2>
               Vào xưởng thôi{" "}
               <Wrench size={22} strokeWidth={1.8} aria-hidden="true" />
@@ -117,8 +126,31 @@ export default function App() {
           <span className="live-pill">LIVE PREVIEW</span>
         </div>
 
-        <div className="studio-grid">
-          <EditorPanel draft={draft} onChange={updateDraft} />
+        {/* Chỉ hiện trên mobile */}
+        <div className="mobile-view-switcher">
+          <button
+            type="button"
+            className={mobileView === "studio" ? "active" : ""}
+            onClick={() => setMobileView("studio")}
+          >
+            <PencilLine size={17} />
+            Studio
+          </button>
+
+          <button
+            type="button"
+            className={mobileView === "preview" ? "active" : ""}
+            onClick={() => setMobileView("preview")}
+          >
+            <Eye size={17} />
+            Bản xem trước
+          </button>
+        </div>
+
+        <div className={`studio-grid mobile-${mobileView}`}>
+          <div className="editor-panel-wrapper">
+            <EditorPanel draft={draft} onChange={updateDraft} />
+          </div>
 
           <section className="preview-panel">
             <div className="preview-heading">
@@ -150,6 +182,7 @@ export default function App() {
               <span className="disclaimer-shield">
                 <CheckCircle2 size={16} strokeWidth={2} aria-hidden="true" />
               </span>
+
               <span>
                 Đây là nội dung giả lập, không phải ảnh chụp cuộc trò chuyện hay
                 bài đăng có thật.
@@ -175,9 +208,11 @@ export default function App() {
 
           <article>
             <span className="how-number">02</span>
+
             <span className="how-emoji">
               <PencilLine size={24} strokeWidth={1.8} aria-hidden="true" />
             </span>
+
             <h3>Thêm gia vị</h3>
             <p>Sửa nội dung, đổi màu, biến ý tưởng thành trò cười.</p>
           </article>
@@ -196,6 +231,7 @@ export default function App() {
           <span className="brand-mark">
             <Laugh size={19} />
           </span>
+
           <span>
             Meme<span className="brand-highlight">A</span>
           </span>
